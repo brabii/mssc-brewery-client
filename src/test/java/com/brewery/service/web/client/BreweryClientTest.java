@@ -2,6 +2,7 @@ package com.brewery.service.web.client;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.net.URI;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
@@ -14,11 +15,19 @@ import com.brewery.service.web.model.BeerDto;
 public class BreweryClientTest {
 
 	@Autowired
-	BreweryClient BreweryClient;
+	BreweryClient breweryClient;
+
+	@Test
+	public void testSaveNewBeer() {
+		BeerDto beerDto = BeerDto.builder().beerName("rabii").build();
+		URI uri = breweryClient.saveNewBeer(beerDto);
+		assertNotNull(uri);
+		System.out.println(uri.toString());
+	}
 
 	@Test
 	public void getBeerById() {
-		BeerDto dto = BreweryClient.getBeerById(UUID.randomUUID());
+		BeerDto dto = breweryClient.getBeerById(UUID.randomUUID());
 		assertNotNull(dto);
 	}
 }
