@@ -18,16 +18,22 @@ public class BreweryClientTest {
 	BreweryClient breweryClient;
 
 	@Test
-	public void testSaveNewBeer() {
-		BeerDto beerDto = BeerDto.builder().beerName("rabii").build();
-		URI uri = breweryClient.saveNewBeer(beerDto);
-		assertNotNull(uri);
-		System.out.println(uri.toString());
+	public void testUpdateBeerById() {
+		BeerDto dto = BeerDto.builder().beerName("rabii").build();
+		breweryClient.updateBeerById(UUID.randomUUID(), dto);
 	}
 
 	@Test
 	public void getBeerById() {
 		BeerDto dto = breweryClient.getBeerById(UUID.randomUUID());
 		assertNotNull(dto);
+	}
+
+	@Test
+	public void testSaveNewBeer() {
+		BeerDto beerDto = BeerDto.builder().beerName("rabii").build();
+		URI uri = breweryClient.saveNewBeer(beerDto);
+		assertNotNull(uri);
+		System.out.println(uri.toString());
 	}
 }

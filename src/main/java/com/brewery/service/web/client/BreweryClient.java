@@ -22,11 +22,18 @@ public class BreweryClient { // mssc-beer
 		this.restTemplate = restTemplateBuilder.build();
 	}
 
+	// put
+	public void updateBeerById(UUID uuid, BeerDto beerDto) {
+		restTemplate.put(apihost + API_PATH_V1 + uuid.toString(), beerDto);
+	}
+
+	// post
 	public URI saveNewBeer(BeerDto beerDto) {
 		URI uri = restTemplate.postForLocation(apihost + API_PATH_V1, beerDto);
 		return uri;
 	}
 
+	// get
 	public BeerDto getBeerById(UUID uuid) {
 		return restTemplate.getForObject(apihost + API_PATH_V1 + uuid.toString(), BeerDto.class);
 	}
