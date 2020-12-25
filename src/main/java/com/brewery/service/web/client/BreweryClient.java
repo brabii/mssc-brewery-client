@@ -22,6 +22,11 @@ public class BreweryClient { // mssc-beer
 		this.restTemplate = restTemplateBuilder.build();
 	}
 
+	// delete
+	public void deleteBeer(UUID uuid) {
+		restTemplate.delete(apihost + API_PATH_V1 + uuid.toString());
+	}
+
 	// put
 	public void updateBeerById(UUID uuid, BeerDto beerDto) {
 		restTemplate.put(apihost + API_PATH_V1 + uuid.toString(), beerDto);
