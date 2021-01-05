@@ -1,6 +1,6 @@
 package com.brewery.service.web.client;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.net.URI;
 import java.util.UUID;
@@ -40,6 +40,7 @@ public class BreweryClientTest {
 	@Test
 	public void getBeerById() {
 		BeerDto dto = breweryClient.getBeerById(UUID.randomUUID());
+		System.err.println(dto);
 		assertNotNull(dto);
 	}
 
@@ -50,10 +51,10 @@ public class BreweryClientTest {
 
 	}
 
-	@Test
-	void testDeleteCustomerById() throws Exception {
-		breweryClient.deleteCustomerById(UUID.randomUUID());
-	}
+//	@Test
+//	void testDeleteCustomerById() throws Exception {
+//		breweryClient.deleteCustomerById(UUID.randomUUID());
+//	}
 
 	@Test
 	void testUpdateCustomerById() {
